@@ -2,13 +2,16 @@
 
 1. Create react app -- npx create-react-app .
 2. Get TMDB API key -- https://www.themoviedb.org/
+   - login
+   - settings
+   - API
+   - Generate API key
 3. Setup firebase hosting
 4. Get all the MOVIES
 5. Build the Banner
 6. Build the Nav bar
 7. Build the Rows
 8. Add Trialer popups
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
