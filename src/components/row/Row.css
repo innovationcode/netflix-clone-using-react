@@ -1,0 +1,33 @@
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.row__posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+  /*FireFox to hide scrollbar*/
+  scrollbar-width: none;
+  /*IE10+ to hide scrollbar*/
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/*Chrome to hide scrollbar*/
+.row__posters::-webkit-scrollbar {
+  display: none;
+}
+
+.row__poster {
+  object-fit: contain;
+  width: 100%;
+  max-height: 110px;
+  margin-right: 10px;
+  transition: transform 450ms;
+}
+
+.row__poster:hover {
+  transform: scale(1.12);
+  opacity: 1;
+}
