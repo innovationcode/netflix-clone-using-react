@@ -7,7 +7,7 @@ body {
   font-family: "Roboto", "HelveticaNeue-Light", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(26, 24, 24);
+  background-color: #111;
 }
 
 code {
