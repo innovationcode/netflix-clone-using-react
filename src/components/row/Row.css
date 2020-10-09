@@ -1,7 +1,7 @@
-/* .row {
-  display: flex;
-  flex-direction: column;
-} */
+.row {
+  margin-left: 20px;
+  color: lightcoral;
+}
 
 .row__posters {
   display: flex;
