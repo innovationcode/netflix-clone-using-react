@@ -1,5 +1,27 @@
 .banner {
   color: white;
   object-fit: contain;
-  height: 448px;
+  height: 450px;
+  margin-bottom: 20px;
+}
+
+.banner__contents {
+  margin-left: 40px;
+  padding-top: 130px;
+  height: 190px;
+}
+
+.banner__title {
+  font-family: arial !important;
+  font-size: 50px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.banner__description {
+  width: 400px;
+  height: 80px;
+  line-height: 28px;
+  letter-spacing: 1px;
+  padding-top: 10px;
 }

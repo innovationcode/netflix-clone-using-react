@@ -1,6 +1,6 @@
 .row {
   margin-left: 20px;
-  color: lightcoral;
+  color: whitesmoke;
 }
 
 .row__posters {
@@ -25,13 +25,18 @@
   max-height: 110px;
   margin-right: 10px;
   transition: transform 450ms;
+  border-radius: 12px;
+  margin-top: 8px;
+  margin-bottom: 10px;
 }
 
 .row__poster:hover {
-  transform: scale(1.12);
+  transform: scale(1.23);
   opacity: 1;
+  border: 1px solid gray;
 }
 
 .row__posterLarge {
   max-height: 260px;
+  border-radius: 12px;
 }

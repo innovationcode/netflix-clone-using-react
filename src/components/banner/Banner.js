@@ -23,6 +23,11 @@ const Banner = () => {
     fetchData();
   }, []);
 
+  // if the decription of movie is too long to limit it to 500 characters using truncate function.
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
+
   return (
     <header
       className="banner"
@@ -33,11 +38,22 @@ const Banner = () => {
         backgroundPosition: "center center",
       }}
     >
-      {" "}
-      {/* Background image for banner */}
-      {/* title */}
-      {/* Buttons play.. */}
-      {/* description */}
+      <div className="banner__contents">
+        {/* title */}
+        <h1 className="banner__title">
+          {movie?.title || movie?.name || movie?.original_name}
+        </h1>
+        {/* Buttons play.. */}
+        <div className="banner__buttons">
+          <button className="banner__button">Play</button>
+          <button className="banner__button">My List</button>
+        </div>
+        {/* description */}
+        <h5 className="banner__description">
+          {" "}
+          {truncate(movie?.overview, 300)}
+        </h5>
+      </div>
     </header>
   );
 };
