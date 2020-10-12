@@ -23,7 +23,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
   }, [fetchUrl]); // [fetchUrl] -- means useEffect is dependent on fetchUrl .. so whenever fetchUrl changes useEffect will run and fetch movies according to fecthUrl provided
 
   const opts = {
-    height: "100vh",
+    height: "700",
     width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
@@ -32,7 +32,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
   };
 
   //this handleclick will setTrailerUrl if video running then on click set Url to empty either search setTrailer url with movie name and search in youtube
-  // and get value of 'v' which will get autoplayed as mentioned in opts
+  //and get value of 'v' which will get autoplayed as mentioned in opts
   const handleClick = (movie) => {
     if (trailerUrl) {
       setTrailerUrl("");
@@ -55,15 +55,26 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
       <div className="row__posters">
         {movies.map((movie, index) => (
           <img
+            onClick={() => handleClick(movie)}
             key={movie.id}
             className={`row__poster ${isLargeRow && "row__posterLarge"}`}
             // if isLargeRow display poster_path bigger size posters or display backdrop_path
             src={`${base_url}${
               isLargeRow ? movie.poster_path : movie.backdrop_path
             }`}
+            alt="movie poster"
           />
         ))}
       </div>
+      {trailerUrl ? (
+        <div className="global-info-window">
+          {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+
+          <button className="close__button" onClick={() => setTrailerUrl("")}>
+            Close
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -40,3 +40,48 @@
   max-height: 260px;
   border-radius: 12px;
 }
+
+.global-info-window {
+  border: 1px solid black;
+  background: #000000;
+  background: rgba(0, 0, 0, 0.6);
+  /* display: none; */
+  height: 90vh;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  color: white;
+  text-transform: uppercase;
+  font-size: 30px;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.close__button {
+  padding: 0.4em 1.4em;
+  /* margin: 2.5em 0.3em 0.3em 0; */
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #e61010;
+  border: 1px solid #ddd6d5;
+  background-color: #e0dbdb;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-size: 20px;
+  letter-spacing: 2.2px;
+  font-weight: 700;
+}
+
+.close__button:hover {
+  background-color: #6cc407;
+}
+
+.close__button:focus {
+  outline: none;
+}
