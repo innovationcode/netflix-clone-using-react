@@ -6,21 +6,27 @@ import Nav from "./components/nav/Nav.js";
 import "./App.css";
 
 function App() {
+  const user = "Lina";
+
   return (
     <div className="App">
-      <Nav />
-      <Banner />
-      <Row
-        rowTitle="NETFLIX ORIGINALS"
-        fetchUrl={requests.fetchNetflixOriginals}
-        isLargeRow
-      />
-      <Row rowTitle="Trending Now" fetchUrl={requests.fetchTrending} />
-      <Row rowTitle="Action Movies" fetchUrl={requests.fetchActionMovies} />
-      <Row rowTitle="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-      <Row rowTitle="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-      <Row rowTitle="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-      <Row rowTitle="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+      {user ? <h1 style = {{color:"cornsilk"}}>Login...... </h1> : (
+        <>
+        <Nav />
+        <Banner />
+        <Row
+          rowTitle="NETFLIX ORIGINALS"
+          fetchUrl={requests.fetchNetflixOriginals}
+          isLargeRow
+        />
+        <Row rowTitle="Trending Now" fetchUrl={requests.fetchTrending} />
+        <Row rowTitle="Action Movies" fetchUrl={requests.fetchActionMovies} />
+        <Row rowTitle="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
+        <Row rowTitle="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+        <Row rowTitle="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
+        <Row rowTitle="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+        </>
+      )}
     </div>
   );
 }

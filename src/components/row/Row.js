@@ -23,7 +23,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
   }, [fetchUrl]); // [fetchUrl] -- means useEffect is dependent on fetchUrl .. so whenever fetchUrl changes useEffect will run and fetch movies according to fecthUrl provided
 
   const opts = {
-    height: "700",
+    height: "650",
     width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
@@ -67,7 +67,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
         ))}
       </div>
       {trailerUrl ? (
-        <div className="global-info-window">
+        <div className="movie-trailer-window">
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
 
           <button className="close__button" onClick={() => setTrailerUrl("")}>
