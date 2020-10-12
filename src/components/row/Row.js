@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../Data/axios.js";
+import YouTube from "react-youtube";
+import movieTrailer from "movie-trailer";
 
 import "./Row.css";
 
@@ -7,19 +9,42 @@ const base_url = "https://image.tmdb.org/t/p/original/";
 
 const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
   const [movies, setMovies] = useState([]);
+  const [trailerUrl, setTrailerUrl] = useState("");
 
   //A snippet of code which runs based on a specific data provided
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
-      //console.log(request)
+      console.log(request);
       setMovies(request.data.results);
       return request;
     }
     fetchData();
   }, [fetchUrl]); // [fetchUrl] -- means useEffect is dependent on fetchUrl .. so whenever fetchUrl changes useEffect will run and fetch movies according to fecthUrl provided
 
-  console.table(movies);
+  const opts = {
+    height: "100vh",
+    width: "100%",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
+  };
+
+  //this handleclick will setTrailerUrl if video running then on click set Url to empty either search setTrailer url with movie name and search in youtube
+  // and get value of 'v' which will get autoplayed as mentioned in opts
+  const handleClick = (movie) => {
+    if (trailerUrl) {
+      setTrailerUrl("");
+    } else {
+      movieTrailer(movie?.name || "")
+        .then((url) => {
+          const urlParams = new URLSearchParams(new URL(url).search);
+          setTrailerUrl(urlParams.get("v"));
+        })
+        .catch((error) => console.log(error));
+    }
+  };
 
   return (
     <div className="row">
