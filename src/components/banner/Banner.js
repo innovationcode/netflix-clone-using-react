@@ -8,6 +8,7 @@ const baseURL = "https://image.tmdb.org/t/p/original/";
 
 const Banner = () => {
   const [movie, setMovie] = useState([]);
+  
   //to show random movie poster and info in banner...
   useEffect(() => {
     async function fetchData() {
