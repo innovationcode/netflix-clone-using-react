@@ -26,8 +26,9 @@ const Login = () => {
     return (
         <div className = 'login'>
             <div className = 'login__logo'>
-                <img style = {{height: '240px', boxShadow: '0 0 18px #FFF'}} src = "https://cdn.vox-cdn.com/thumbor/QuS2QKQys3HhosKiV-2IuKhphbo=/39x0:3111x2048/1400x1050/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png"/>
-                <img style = {{height: '50px', paddingTop : '40px'}}src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png"
+                <img style = {{height: '240px', boxShadow: '0 0 10px #FFF'}} src = "https://cdn.vox-cdn.com/thumbor/QuS2QKQys3HhosKiV-2IuKhphbo=/39x0:3111x2048/1400x1050/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png"/>
+                
+                <img style = {{height: '50px', paddingTop : '80px'}}src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png"
                      alt="Netflix Logo" 
                 />
             </div> 

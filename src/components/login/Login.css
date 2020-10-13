@@ -21,7 +21,8 @@
 }
 
 .login > button {
-  width: 200px;
+  margin-top: -110px;
+  width: 160px;
   background-color: #dd0f20;
   color: #eff2f5;
   font-weight: 900;
