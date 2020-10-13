@@ -7,11 +7,11 @@ import Login from './components/login/Login.js'
 import "./App.css";
 
 function App() {
-  const user = "Lina";
+  const [user, setUser] = window.localStorage.getItem('user')
 
   return (
     <div className="App">
-      {user ? <h1 style = {{color:"cornsilk"}}><Login /></h1> : (
+      {!user ? <h1 style = {{color:"cornsilk"}}><Login /></h1> : (
         <>
         <Nav />
         <Banner />
