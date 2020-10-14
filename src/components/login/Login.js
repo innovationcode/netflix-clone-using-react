@@ -6,19 +6,16 @@ import { auth, provider } from '../../firebase/firebase.js';
 
 import './Login.css';
 
-const Login = () => {
+const Login = ({ setUser }) => {
 
-    const [user, setUser] = useState();
+    //const [user, setUser] = useState();
 
     const signIn = () => {
-        //Sign In
         auth.signInWithPopup(provider)
             .then(result => {
-                setUser(result.user)
-
-                //console.log("USSER  === ", result.user.displayName)
+                console.log("RESULT ====>  ",result.user._lat)
+                setUser(result.user.displayName)
                 window.localStorage.setItem('user', result.user.displayName)
-
                 // dispatch({
                 //     type: actionTypes.SET_USER,
                 //     user: result.user,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Row from "./components/row/Row.js";
 import requests from "./Data/requests.js";
 import Banner from "./components/banner/Banner.js";
@@ -7,13 +7,14 @@ import Login from './components/login/Login.js'
 import "./App.css";
 
 function App() {
-  const [user, setUser] = window.localStorage.getItem('user')
+  const [user, setUser] = useState('')
+  // window.localStorage.getItem('user')
 
   return (
     <div className="App">
-      {!user ? <h1 style = {{color:"cornsilk"}}><Login /></h1> : (
+      {!user ? <h1 style = {{color:"cornsilk"}}><Login setUser = {setUser}/></h1> : (
         <>
-        <Nav />
+        <Nav setUser = {setUser}/>
         <Banner />
         <Row
           rowTitle="NETFLIX ORIGINALS"

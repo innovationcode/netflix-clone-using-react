@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Nav.css";
 
-const Nav = () => {
+const Nav = ({ setUser }) => {
   const [show, handleShow] = useState(false);
 
   useEffect(() => {
@@ -12,10 +12,15 @@ const Nav = () => {
         handleShow(false);
       }
     });
-    return () => {
-      window.removeEventListener("scroll");
-    };
+    // return () => {
+    //   window.removeEventListener("scroll");
+    // };
   }, []);
+
+  const signOut = () => {
+      window.localStorage.removeItem('user')
+      setUser('')
+  }
 
   return (
     <div className={`nav ${show && "nav__black"}`}>
@@ -30,7 +35,11 @@ const Nav = () => {
         src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png"
         alt="Profile"
       /> */}
-      <button className="nav__avatar">Sign In</button>
+      <button className="nav__avatar"
+              onClick = {signOut}  
+      >
+          Sign Out
+      </button>
     </div>
   );
 };
