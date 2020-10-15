@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, use } from 'react';
 import Button from '@material-ui/core/Button';
 import { auth, provider } from '../../firebase/firebase.js';
-// import { useStateValue } from './../../stateProvider/StateProvider.js';
-// import { actionTypes } from './../../stateProvider/reducer.js';
 
 import './Login.css';
 
 const Login = ({ setUser }) => {
-
-    //const [user, setUser] = useState();
 
     const signIn = () => {
         auth.signInWithPopup(provider)
@@ -16,10 +12,6 @@ const Login = ({ setUser }) => {
                 console.log("RESULT ====>  ",result.user._lat)
                 setUser(result.user.displayName)
                 window.localStorage.setItem('user', result.user.displayName)
-                // dispatch({
-                //     type: actionTypes.SET_USER,
-                //     user: result.user,
-                // })
              })
             .catch(error => alert(error.message));
    };

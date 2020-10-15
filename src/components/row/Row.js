@@ -8,9 +8,10 @@ import "./Row.css";
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
+  console.log("rowTitle, fetchUrl, isLargeRow  ---- ", rowTitle, fetchUrl, isLargeRow);
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
-
+  
   //A snippet of code which runs based on a specific data provided
   useEffect(() => {
     async function fetchData() {
@@ -21,6 +22,11 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
     }
     fetchData();
   }, [fetchUrl]); // [fetchUrl] -- means useEffect is dependent on fetchUrl .. so whenever fetchUrl changes useEffect will run and fetch movies according to fecthUrl provided
+
+  // if(!movies) {
+  //    console.log("MOVIES----  ", movies)
+  //    return <>Loading...</>
+  // }
 
   const opts = {
     height: "650",

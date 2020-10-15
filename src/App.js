@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Row from "./components/row/Row.js";
 import requests from "./Data/requests.js";
 import Banner from "./components/banner/Banner.js";
 import Nav from "./components/nav/Nav.js";
 import Login from './components/login/Login.js'
+import { auth } from './firebase/firebase.js';
+
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useState('')
-  // window.localStorage.getItem('user')
-
+  const [user, setUser] = useState('');
+  
   return (
     <div className="App">
       {!user ? <h1 style = {{color:"cornsilk"}}><Login setUser = {setUser}/></h1> : (

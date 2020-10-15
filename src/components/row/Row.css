@@ -8,6 +8,7 @@
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 20px;
+  cursor: pointer;
   /*FireFox to hide scrollbar*/
   scrollbar-width: none;
   /*IE10+ to hide scrollbar*/
@@ -27,6 +28,7 @@
   transition: transform 450ms;
   border-radius: 12px;
   margin-top: 10px;
+  cursor: pointer;
   margin-bottom: 10px;
 }
 

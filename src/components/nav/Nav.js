@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import firebase from 'firebase';
 import "./Nav.css";
 
 const Nav = ({ setUser }) => {
@@ -12,14 +13,12 @@ const Nav = ({ setUser }) => {
         handleShow(false);
       }
     });
-    // return () => {
-    //   window.removeEventListener("scroll");
-    // };
   }, []);
 
   const signOut = () => {
-      window.localStorage.removeItem('user')
-      setUser('')
+      firebase.auth().signOut();
+      window.localStorage.removeItem('user');
+      setUser('');
   }
 
   return (
