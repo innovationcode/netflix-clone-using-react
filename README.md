@@ -1,6 +1,6 @@
 # [Deployed App](https://netflix-clone001.web.app)
 
-![Movie App](Basic-calc.png)
+![Movie App](app_pic.PNG)
 
 ## Steps :---
 
