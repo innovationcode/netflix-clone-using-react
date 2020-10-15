@@ -1,3 +1,8 @@
+# [Deployed App](https://netflix-clone001.web.app)
+
+![Movie App](Basic-calc.png)
+
+
 ## Steps :---
 
 1. Create react app -- npx create-react-app .
