@@ -23,11 +23,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
     fetchData();
   }, [fetchUrl]); // [fetchUrl] -- means useEffect is dependent on fetchUrl .. so whenever fetchUrl changes useEffect will run and fetch movies according to fecthUrl provided
 
-  // if(!movies) {
-  //    console.log("MOVIES----  ", movies)
-  //    return <>Loading...</>
-  // }
-
+  
   const opts = {
     height: "650",
     width: "100%",

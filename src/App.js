@@ -10,7 +10,20 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState('');
+  const [pending, setPending] = useState(true);
+
+  useEffect(() => {
+      auth.onAuthStateChanged((user) => { //to keep user sign-in on refresh i.e. unless sign-out
+        setUser(user)
+        setPending(false)
+      })}, 
+  []);
+
+  if(pending) {
+    return <>Loading...</>
+  }
   
+
   return (
     <div className="App">
       {!user ? <h1 style = {{color:"cornsilk"}}><Login setUser = {setUser}/></h1> : (
