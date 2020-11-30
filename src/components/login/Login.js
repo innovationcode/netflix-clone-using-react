@@ -15,7 +15,7 @@ const Login = ({ setUser }) => {
             .catch(error => alert(error.message));
    };
 
-    return (
+   return (
         <div className = 'login'>
             <div className = 'login__logo'>
                 <img style = {{height: '200px', boxShadow: '0 0 10px #FFF', borderRadius: '6px'}} 
@@ -23,8 +23,9 @@ const Login = ({ setUser }) => {
                      alt = 'Netflix-logo'
                 />
                 
-                <img style = {{height: '50px', paddingTop : '80px'}}
-                     src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png"
+                <img style = {{height: '70px', paddingTop : '80px'}}
+                    //  src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Logo_Netflix.png"
+                     src = "https://www.androidpolice.com/wp-content/uploads/2015/02/nexus2cee_Netflix_Logo_Digital-Video-e1424532515143.png"
                      alt="Netflix Logo" 
                 />
             </div> 

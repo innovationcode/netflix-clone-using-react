@@ -87,3 +87,15 @@
 .close__button:focus {
   outline: none;
 }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .row {
+    margin-left: 10px;
+  }
+
+  .row__poster,
+  .row__posterLarge {
+    padding-left: 6px;
+  }
+}

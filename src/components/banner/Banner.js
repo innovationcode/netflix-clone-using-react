@@ -46,7 +46,7 @@ const Banner = () => {
         </h1>
         {/* Buttons play.. */}
         <div className="banner__buttons">
-          <button className="banner__button">Play</button>
+          <button className="banner__button" >Play</button>
           <button className="banner__button">My List</button>
         </div>
         {/* description */}
