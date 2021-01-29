@@ -1,7 +1,6 @@
 //import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-console.log("API_KEY -- ", API_KEY)
 const requests = {
       fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,
       fetchNetflixOriginals: `/discover/tv?api_key=${API_KEY}&with_networks=213`,

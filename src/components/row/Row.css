@@ -13,6 +13,7 @@
   scrollbar-width: none;
   /*IE10+ to hide scrollbar*/
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  margin-top: 0.4%;
 }
 
 /*Chrome to hide scrollbar*/
@@ -26,21 +27,28 @@
   max-height: 110px;
   margin-right: 10px;
   transition: transform 450ms;
-  border-radius: 12px;
+  border-radius: 10px;
   margin-top: 10px;
   cursor: pointer;
   margin-bottom: 10px;
+
+  /* margin-right: 1.25%; */
 }
 
 .row__poster:hover {
-  transform: scale(1.23);
+  transform: scale(1.52);
   opacity: 1;
   border: 1px solid gray;
 }
 
+.row__posterLarge:hover {
+  transform: scale(1.222);
+}
+
 .row__posterLarge {
   max-height: 260px;
-  border-radius: 12px;
+  border-radius: 10px;
+  /* margin-right: 1.25%; */
 }
 
 .movie-trailer-window {

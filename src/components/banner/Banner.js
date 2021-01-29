@@ -30,13 +30,20 @@ const Banner = () => {
   }
 
   return (
+    <>
     <header
       className="banner"
       style={{
         backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        // backgroundSize: "cover",
         backgroundImage: `url(${baseURL}${movie?.backdrop_path})`,
-        backgroundPosition: "center center",
+        // backgroundPosition: "center center",
+
+            backgroundSize: '100vw 65vh',
+            backgroundAttachment: 'fixed',
+            // height: '40em',
+            marginTop: '0',
+            padding: '0'
       }}
     >
       <div className="banner__contents">
@@ -55,9 +62,24 @@ const Banner = () => {
           {truncate(movie?.overview, 300)}
         </h5>
       </div>
+      {/* ********************************************************************************************** */}
+{/* 
+      <div className="banner__movie__image"
+           style={{
+              
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              backgroundImage: `url(${baseURL}${movie?.backdrop_path})`,
+              backgroundPosition: "center center",objectFit: 'contain', height: '500px', marginBottom: '20px', flex :'0.67 1'
+            }}
+      >
+      </div> */}
 
       <div className="banner--fadeBottom" />
     </header>
+    {/* <div className="banner--fadeBottom" /> */}
+
+    </>
   );
 };
 

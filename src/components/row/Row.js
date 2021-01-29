@@ -8,7 +8,7 @@ import "./Row.css";
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
-  console.log("rowTitle, fetchUrl, isLargeRow  ---- ", rowTitle, fetchUrl, isLargeRow);
+  // console.log("rowTitle, fetchUrl, isLargeRow  ---- ", rowTitle, fetchUrl, isLargeRow);
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   
@@ -51,10 +51,43 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
   return (
     <div className="row">
       {/* rowTitle */}
-      <h2>{rowTitle}</h2>
+      <h2 style = {{fontWeight: '500',
+                    fontSize: '26px',
+                    textTransform: 'none',
+                    fontFamily: "Roboto !important"}}
+      > {rowTitle}  
+      </h2>
 
       {/* container-- movie posters */}
       <div className="row__posters">
+        {movies.map((movie, index) => (
+          <div className={`row__poster ${isLargeRow && "row__posterLarge"}`}>
+              <img
+                onClick={() => handleClick(movie)}
+                key={movie.id}
+                style = {{maxWidth: '200px',
+                          height: '100%',
+                          marginLeft: '8px',
+                          borderRadius: '5px'}}
+                // className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                // if isLargeRow display poster_path bigger size posters or display backdrop_path
+                src={`${base_url}${
+                  isLargeRow ? movie.poster_path : movie.backdrop_path
+                }`}
+                alt="movie poster"
+              />
+
+              {/* <div className = "row__poster__info">
+                  {movie.name ? (<h2>{movie.name}</h2>) : (<h2>{movie.title}</h2>)}
+                  <p>{movie.overview.substring(0,100)}</p>
+              </div>  */}
+          </div>
+        ))}
+      </div>
+
+      {/* ************************************************************************************************************************* */}
+
+      {/* <div className="row__posters">
         {movies.map((movie, index) => (
           <img
             onClick={() => handleClick(movie)}
@@ -67,7 +100,10 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
             alt="movie poster"
           />
         ))}
-      </div>
+      </div> */}
+
+      {/* ************************************************************************************************************************* */}
+
       {trailerUrl ? (
         <div className="movie-trailer-window">
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}

@@ -1,7 +1,7 @@
 .banner {
   color: white;
   object-fit: contain;
-  height: 500px;
+  height: 575px;
   margin-bottom: 20px;
   -moz-height: 500px;
 }
@@ -25,7 +25,9 @@
   line-height: 28px;
   letter-spacing: 1px;
   padding-top: 10px;
-  font-size: medium;
+  font-family: "Roboto" !important;
+  font-weight: 100;
+  font-size: 20px;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
@@ -36,6 +38,11 @@
 
   .banner__description {
     width: 300px;
+    font-weight: 300;
+  }
+  .banner {
+    height: auto;
+    padding-bottom: 8px;
   }
 }
 
@@ -62,8 +69,8 @@
 }
 
 .banner--fadeBottom {
-  height: 9.6rem;
-  /* height: 7.5rem; */
+  height: 14.6rem;
+  /* height: 9.6rem; */
   background-image: linear-gradient(
     180deg,
     transparent,

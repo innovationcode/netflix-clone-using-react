@@ -12,6 +12,9 @@ function App() {
   const [user, setUser] = useState('');
   const [pending, setPending] = useState(true);
 
+  console.log("USER -->> ", user.displayName)
+
+
   useEffect(() => {
       auth.onAuthStateChanged((user) => { //to keep user sign-in on refresh i.e. unless sign-out
         setUser(user)
