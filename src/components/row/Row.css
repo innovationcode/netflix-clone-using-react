@@ -31,8 +31,25 @@
   margin-top: 10px;
   cursor: pointer;
   margin-bottom: 10px;
+  margin-right: 0.8%;
+}
 
-  /* margin-right: 1.25%; */
+.movie__image {
+  width: 200px;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.movie__image:hover .row__poster__info {
+  visibility: visible;
+}
+
+.row__poster__info {
+  position: absolute;
+  bottom: -2%;
+  margin-left: 1%;
+  visibility: hidden;
+  z-index: 1090;
 }
 
 .row__poster:hover {
@@ -46,9 +63,9 @@
 }
 
 .row__posterLarge {
-  max-height: 260px;
+  max-height: 270px;
   border-radius: 10px;
-  /* margin-right: 1.25%; */
+  margin-right: 0.8%;
 }
 
 .movie-trailer-window {

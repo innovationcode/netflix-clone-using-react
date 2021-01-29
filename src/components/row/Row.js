@@ -65,10 +65,8 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
               <img
                 onClick={() => handleClick(movie)}
                 key={movie.id}
-                style = {{maxWidth: '200px',
-                          height: '100%',
-                          marginLeft: '8px',
-                          borderRadius: '5px'}}
+                className = "movie__image"
+                
                 // className={`row__poster ${isLargeRow && "row__posterLarge"}`}
                 // if isLargeRow display poster_path bigger size posters or display backdrop_path
                 src={`${base_url}${
@@ -77,10 +75,10 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
                 alt="movie poster"
               />
 
-              {/* <div className = "row__poster__info">
-                  {movie.name ? (<h2>{movie.name}</h2>) : (<h2>{movie.title}</h2>)}
+              <div className = "row__poster__info">
+                  {movie.name ? (<p>{movie.name}</p>) : (<p>{movie.title}</p>)}
                   <p>{movie.overview.substring(0,100)}</p>
-              </div>  */}
+              </div> 
           </div>
         ))}
       </div>
