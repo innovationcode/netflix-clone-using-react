@@ -34,23 +34,17 @@
   margin-right: 0.8%;
 }
 
+.row__posterLarge {
+  max-height: 270px;
+  border-radius: 10px;
+  margin-right: 0.8%;
+}
+
 .movie__image {
   width: 200px;
   height: 100%;
   border-radius: 8px;
   z-index: 2;
-}
-
-.row__posterLarge:hover {
-  transform: scale(1.222);
-}
-
-.row__posterLarge:hover .movie__image {
-  opacity: 0.3; /* css standard */
-}
-
-.row__posterLarge:hover .row__poster__info {
-  visibility: visible;
 }
 
 .row__poster__info {
@@ -61,20 +55,45 @@
   width: 100%;
 }
 
+.row__poster__info__row__small__poster {
+  position: absolute;
+  z-index: 1;
+  bottom: 2%;
+  color: white;
+  visibility: hidden;
+  font-size: 9px;
+  font-family: "Roboto" !important;
+  margin: 4px;
+}
+
+.row__posterLarge:hover .movie__image {
+  opacity: 0.35;
+}
+
+.row__posterLarge:hover .row__poster__info {
+  visibility: visible;
+}
+
 .row__poster:hover {
-  transform: scale(1.52);
+  transform: scale(1.54);
   opacity: 1;
   border: 1px solid gray;
 }
 
-.row__poster:hover {
+.row__poster:hover .movie__image {
+  opacity: 0.45;
+}
+
+.row__poster:hover .row__poster__info__row__small__poster {
+  visibility: visible;
+}
+
+.row__posterLarge:hover {
   transform: scale(1.222);
 }
 
-.row__posterLarge {
-  max-height: 270px;
-  border-radius: 10px;
-  margin-right: 0.8%;
+.row__posterLarge:hover .row__poster__info__row__small__poster {
+  visibility: hidden;
 }
 
 .movie-trailer-window {
