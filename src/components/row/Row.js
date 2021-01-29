@@ -67,8 +67,6 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
                 key={movie.id}
                 className = "movie__image"
                 
-                // className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-                // if isLargeRow display poster_path bigger size posters or display backdrop_path
                 src={`${base_url}${
                   isLargeRow ? movie.poster_path : movie.backdrop_path
                 }`}
@@ -83,7 +81,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
               </div> 
 
               <div className = "row__poster__info__row__small__poster">
-                  {movie.name ? (<h3> {movie.name.substring(0,40)}</h3>) : (<h3 style = {{paddingBottom: '4px'}}>{movie.title.substring(0,40)}</h3>)}
+                  {movie.name ? (<h3 style = {{paddingBottom: '4px', fontSize: '12px'}}> {movie.name.substring(0,40)}</h3>) : (<h3 style = {{paddingBottom: '4px', fontSize: '12px'}}>{movie.title.substring(0,40)}</h3>)}
                   <p>
                      {movie.overview.substring(0,100)}...
                   </p>
@@ -110,7 +108,6 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
       </div> */}
 
       {/* ************************************************************************************************************************* */}
-
       {trailerUrl ? (
         <div className="movie-trailer-window">
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}

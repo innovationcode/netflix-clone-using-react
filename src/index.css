@@ -2,12 +2,18 @@
   margin: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: "Roboto", "HelveticaNeue-Light", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #111;
+  height: 100%;
+  width: 100%;
 }
 
 code {
