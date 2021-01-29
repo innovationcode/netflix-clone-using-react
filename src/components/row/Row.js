@@ -76,8 +76,10 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
               />
 
               <div className = "row__poster__info">
-                  {movie.name ? (<p>{movie.name}</p>) : (<p>{movie.title}</p>)}
-                  <p>{movie.overview.substring(0,100)}</p>
+                  {movie.name ? (<h3 style = {{fontFamily:"Roboto !important", paddingLeft: '12px'}}>{movie.name.substring(0,40)}</h3>) : (<h3>{movie.title.substring(0,40)}</h3>)}
+                  <p style = {{fontFamily:"Roboto !important", fontSize: '13px', padding: '12px 15px 18px 12px'}}>
+                     {movie.overview.substring(0,150)}...
+                  </p>
               </div> 
           </div>
         ))}

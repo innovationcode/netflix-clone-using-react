@@ -38,18 +38,27 @@
   width: 200px;
   height: 100%;
   border-radius: 8px;
+  z-index: 2;
 }
 
-.movie__image:hover .row__poster__info {
+.row__posterLarge:hover {
+  transform: scale(1.222);
+}
+
+.row__posterLarge:hover .movie__image {
+  opacity: 0.3; /* css standard */
+}
+
+.row__posterLarge:hover .row__poster__info {
   visibility: visible;
 }
 
 .row__poster__info {
   position: absolute;
   bottom: -2%;
-  margin-left: 1%;
   visibility: hidden;
   z-index: 1090;
+  width: 100%;
 }
 
 .row__poster:hover {
@@ -58,7 +67,7 @@
   border: 1px solid gray;
 }
 
-.row__posterLarge:hover {
+.row__poster:hover {
   transform: scale(1.222);
 }
 
