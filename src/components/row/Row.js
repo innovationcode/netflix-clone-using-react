@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "../../Data/axios.js";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
+import MovieDetail from './../movieDetail/MovieDetail.js';
 
 import "./Row.css";
 
@@ -11,6 +12,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
   // console.log("rowTitle, fetchUrl, isLargeRow  ---- ", rowTitle, fetchUrl, isLargeRow);
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
+  const [movieDetail, setMovieDetail] = useState('')
   
   //A snippet of code which runs based on a specific data provided
   useEffect(() => {
@@ -35,18 +37,18 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
 
   //this handleclick will setTrailerUrl if video running then on click set Url to empty either search setTrailer url with movie name and search in youtube
   //and get value of 'v' which will get autoplayed as mentioned in opts
-  const handleClick = (movie) => {
-    if (trailerUrl) {
-      setTrailerUrl("");
-    } else {
-      movieTrailer(movie?.name || "")
-        .then((url) => {
-          const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerUrl(urlParams.get("v"));
-        })
-        .catch((error) => console.log(error));
-    }
-  };
+  // const handleClick = (movie) => {
+  //   if (trailerUrl) {
+  //     setTrailerUrl("");
+  //   } else {
+  //     movieTrailer(movie?.name || "")
+  //       .then((url) => {
+  //         const urlParams = new URLSearchParams(new URL(url).search);
+  //         setTrailerUrl(urlParams.get("v"));
+  //       })
+  //       .catch((error) => console.log(error));
+  //   }
+  // };
 
   return (
     <div className="row">
@@ -63,7 +65,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
         {movies.map((movie, index) => (
           <div className={`row__poster ${isLargeRow && "row__posterLarge"}`}>
               <img
-                onClick={() => handleClick(movie)}
+                onClick={() => setMovieDetail(true)}
                 key={movie.id}
                 className = "movie__image"
                 
@@ -105,9 +107,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
             alt="movie poster"
           />
         ))}
-      </div> */}
-
-      {/* ************************************************************************************************************************* */}
+      </div> 
       {trailerUrl ? (
         <div className="movie-trailer-window">
           {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
@@ -117,6 +117,12 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
           </button>
         </div>
       ) : null}
+
+      */}
+
+      {/* ************************************************************************************************************************* */}
+
+      {movieDetail && <MovieDetail />}
     </div>
   );
 };
