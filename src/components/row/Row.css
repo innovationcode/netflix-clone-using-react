@@ -53,6 +53,11 @@
   visibility: hidden;
   z-index: 1090;
   width: 100%;
+  background-image: linear-gradient(
+    rgba(4, 8, 15, 0),
+    rgb(25, 33, 51),
+    rgb(25, 33, 51)
+  );
 }
 
 .row__poster__info__row__small__poster {
@@ -64,11 +69,16 @@
   font-size: 9px;
   font-family: "Roboto" !important;
   margin: 4px;
+  background-image: linear-gradient(
+    rgba(4, 8, 15, 0),
+    rgb(25, 33, 51),
+    rgb(25, 33, 51)
+  );
 }
 
-.row__posterLarge:hover .movie__image {
+/* .row__posterLarge:hover .movie__image {
   opacity: 0.35;
-}
+} */
 
 .row__posterLarge:hover .row__poster__info {
   visibility: visible;
@@ -80,9 +90,9 @@
   border: 1px solid gray;
 }
 
-.row__poster:hover .movie__image {
+/* .row__poster:hover .movie__image {
   opacity: 0.45;
-}
+} */
 
 .row__poster:hover .row__poster__info__row__small__poster {
   visibility: visible;
