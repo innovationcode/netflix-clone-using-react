@@ -53,6 +53,8 @@
   visibility: hidden;
   z-index: 1090;
   width: 100%;
+  border-radius: 8px;
+  margin-bottom: 5px;
   background-image: linear-gradient(
     rgba(4, 8, 15, 0),
     rgb(25, 33, 51),
@@ -68,7 +70,9 @@
   visibility: hidden;
   font-size: 9px;
   font-family: "Roboto" !important;
-  margin: 4px;
+  padding: 4px;
+  border-radius: 8px;
+  margin-bottom: -3.1px;
   background-image: linear-gradient(
     rgba(4, 8, 15, 0),
     rgb(25, 33, 51),

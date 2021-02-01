@@ -12,9 +12,9 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
   // console.log("rowTitle, fetchUrl, isLargeRow  ---- ", rowTitle, fetchUrl, isLargeRow);
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
-  const [movieDetail, setMovieDetail] = useState('')
-  
-  //A snippet of code which runs based on a specific data provided
+  const [movieId, setMovieId] = useState(0)
+
+    //A snippet of code which runs based on a specific data provided
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
@@ -50,6 +50,11 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
   //   }
   // };
 
+  const handleMovieDetails = (movie) => {
+    const id = parseInt(movie.id)
+    setMovieId(id)
+  }
+
   return (
     <div className="row">
       {/* rowTitle */}
@@ -63,9 +68,10 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
       {/* container-- movie posters */}
       <div className="row__posters">
         {movies.map((movie, index) => (
-          <div className={`row__poster ${isLargeRow && "row__posterLarge"}`}>
+          <div className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+               onClick={() => handleMovieDetails(movie)} 
+          >
               <img
-                onClick={() => setMovieDetail(true)}
                 key={movie.id}
                 className = "movie__image"
                 
@@ -80,6 +86,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
                   <p style = {{fontFamily:"Roboto !important", fontSize: '13px', padding: '12px 15px 18px 12px'}}>
                      {movie.overview.substring(0,150)}...
                   </p>
+                  <p style = {{color:'crimson', padding:'6px'}}>{movie.id}</p>
               </div> 
 
               <div className = "row__poster__info__row__small__poster">
@@ -87,6 +94,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
                   <p>
                      {movie.overview.substring(0,100)}...
                   </p>
+                  <p style = {{color:'crimson', padding:'6px'}}>{movie.id}</p>
               </div>
           </div>
         ))}
@@ -122,7 +130,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
 
       {/* ************************************************************************************************************************* */}
 
-      {movieDetail && <MovieDetail />}
+      { movieId && <MovieDetail movie_id ={movieId} /> }
     </div>
   );
 };
