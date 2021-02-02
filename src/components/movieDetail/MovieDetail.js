@@ -35,9 +35,25 @@ const MovieDetail = ({ movie_id }) => {
                         {/* style = {{border:'5px solid cyan'}} */}
                               <div className = "moviedetail__text__info" style ={{color:'white'}} >
                                     <h1>{movieDetails.title}</h1>
+
                                     <p>{movieDetails.overview}</p>
-                                    <p>Release Date : &nbsp;{movieDetails.release_date}</p> 
-                                    <div style = {{display:'flex', flexDirection:'row'}}><img src = './assests/imdb.png' alt="imdb"></img><p>{movieDetails.vote_average} / 10 ⭐ </p></div>
+
+                                    <p style ={{paddingTop:'18px', paddingBottom: '8px'}}>
+                                          <span style = {{color:'gold', fontSize:'20px'}}>
+                                                Release Date : 
+                                          </span>
+                                          &nbsp;{movieDetails.release_date}
+                                    </p>
+
+                                     {/* MOVIE  RATING  */}
+                                    <div class = "movie__rating">
+                                          <img src = 'https://variety.com/wp-content/uploads/2017/02/imdb1.png' 
+                                               alt="imdb" 
+                                               style = {{width:'50px'}}                                        
+                                          ></img>
+                                          <span class ="movie__rating__span">{movieDetails.vote_average}/10 ⭐ </span>
+                                    </div>
+
                               </div>  
                               <span className = "moviedetail__close" onClick = {() => {setShowMovieDetails(false)}}>X</span>
                         </div>
