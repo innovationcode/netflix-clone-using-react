@@ -86,7 +86,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
                   <p style = {{fontFamily:"Roboto !important", fontSize: '13px', padding: '12px 15px 18px 12px'}}>
                      {movie.overview.substring(0,150)}...
                   </p>
-                  <p style = {{color:'crimson', padding:'6px'}}>{movie.id}</p>
+                  {/* <p style = {{color:'crimson', padding:'6px'}}>{movie.id}</p> */}
               </div> 
 
               <div className = "row__poster__info__row__small__poster">
@@ -94,7 +94,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
                   <p>
                      {movie.overview.substring(0,100)}...
                   </p>
-                  <p style = {{color:'crimson', padding:'6px'}}>{movie.id}</p>
+                  {/* <p style = {{color:'crimson', padding:'6px'}}>{movie.id}</p> */}
               </div>
           </div>
         ))}

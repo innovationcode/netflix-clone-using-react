@@ -20,22 +20,27 @@ const MovieDetail = ({ movie_id }) => {
             fetchData();
       }, [movie_id]);
 
+      console.log(movieDetails, ">>>>>>>>>>>>>>>>>")
 
       return (
             <>
             {showMovieDetails ? ( 
             <div className="moviedetail">
                   <div className="moviedetail__show">
-                        <div className = "moviedetail__image">
-                              {movieDetails.poster_path ? (<img src = {`${base_url}${movieDetails.poster_path}`} alt = "movie poster"/> ) : 
+                        <div className = "moviedetail__inner_div">
+                              <div className = "moviedetail__image">
+                                    {movieDetails.poster_path ? (<img src = {`${base_url}${movieDetails.poster_path}`} alt = "movie poster"/> ) : 
                                                           (<img src = {`${base_url}${movieDetails.backdrop_path}`} alt = "movie poster"/> ) }                             
+                              </div>
+                        {/* style = {{border:'5px solid cyan'}} */}
+                              <div className = "moviedetail__text__info" style ={{color:'white'}} >
+                                    <h1>{movieDetails.title}</h1>
+                                    <p>{movieDetails.overview}</p>
+                                    <p>Release Date : &nbsp;{movieDetails.release_date}</p> 
+                                    <div style = {{display:'flex', flexDirection:'row'}}><img src = './assests/imdb.png' alt="imdb"></img><p>{movieDetails.vote_average} / 10 ⭐ </p></div>
+                              </div>  
+                              <span className = "moviedetail__close" onClick = {() => {setShowMovieDetails(false)}}>X</span>
                         </div>
-                        
-                        <div className = "moviedetail__text__info">
-                              <h1>{movieDetails.title}</h1>
-                        </div>  
-                        <span className = "moviedetail__close" onClick = {() => {setShowMovieDetails(false)}}>X</span>
-    
                   </div>   
             </div> ) :
             (
