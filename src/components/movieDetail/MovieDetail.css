@@ -149,20 +149,25 @@
 .movie__social__share__bottom {
   text-align: center;
   color: #fff;
-  font-size: 10px;
-  font-weight: 500;
+  font-family: "Roboto" !important;
+  font-weight: 100;
+  font-size: 14px;
 }
 
 .materialUI__icons {
-  font-size: 36px;
+  font-size: 2.2rem !important;
   color: white;
+}
+
+.materialUI__icons_share {
+  font-size: 1.7rem !important;
 }
 
 .social__share__hover {
   display: flex;
   z-index: 1;
   position: absolute;
-  margin-top: 50px;
+  margin-top: 60px;
   visibility: hidden;
   background-color: rgba(75, 73, 73, 0.496);
   /* background-color: rgba(97, 94, 94, 0.295); */
@@ -179,6 +184,6 @@
 }
 
 .share-social-icons {
-  font-size: 2rem !important;
+  font-size: 2.1rem !important;
   cursor: pointer;
 }

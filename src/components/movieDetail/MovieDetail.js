@@ -79,8 +79,7 @@ const MovieDetail = ({ movie_id }) => {
                                           <div className="movie__social__share">
                                                 <span className="movie__social__share__top">
                                                       <ShareIcon
-                                                            className="materialUI__icons"
-                                                            style={{ fontSize: "23px" }}
+                                                            className="materialUI__icons_share"
                                                       />
                                                 </span>
                                                 <span
