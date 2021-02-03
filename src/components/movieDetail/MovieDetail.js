@@ -1,5 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from "../../Data/axios.js";
+import ShareIcon from "@material-ui/icons/Share";
+import AddIcon from "@material-ui/icons/Add";
+import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 import './MovieDetail.css'
 
@@ -32,8 +37,8 @@ const MovieDetail = ({ movie_id }) => {
                                     {movieDetails.poster_path ? (<img src = {`${base_url}${movieDetails.poster_path}`} alt = "movie poster"/> ) : 
                                                           (<img src = {`${base_url}${movieDetails.backdrop_path}`} alt = "movie poster"/> ) }                             
                               </div>
-                        {/* style = {{border:'5px solid cyan'}} */}
-                              <div className = "moviedetail__text__info" style ={{color:'white'}} >
+                              {/* Movie Detail text -- name, overview, release date */}
+                              <div className = "moviedetail__text__info">
                                     <h1>{movieDetails.title}</h1>
 
                                     <p>{movieDetails.overview}</p>
@@ -54,7 +59,17 @@ const MovieDetail = ({ movie_id }) => {
                                           <span class ="movie__rating__span">{movieDetails.vote_average}/10 ⭐ </span>
                                     </div>
 
-                              </div>  
+                                    {/* * TRILER , Watchlist, SOCIAL SHARE ENDS* */}
+                                    <div className ="moviedetail__text__bottom">
+                                          <div className="movie__trailer">
+                                                <span className="movie__trailer__top">
+                                                      <PlayArrowRoundedIcon className="materialUI__icons" />
+                                                </span>
+                                                <span className="movie__trailer__bottom">TRAILER</span>
+                                          </div>                        
+                                    </div>
+                                    {/* * TRILER , Watchlist, SOCIAL SHARE ENDS* */}
+                              </div>
                               <span className = "moviedetail__close" onClick = {() => {setShowMovieDetails(false)}}>X</span>
                         </div>
                   </div>   

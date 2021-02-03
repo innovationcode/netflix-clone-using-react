@@ -54,12 +54,12 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   color: rgb(240, 231, 231);
 }
 
 .moviedetail__text__info {
-  color: black;
+  color: white;
   font-size: 15px;
   margin-left: 15px;
   margin-right: 22px;
@@ -90,7 +90,7 @@
 
 .movie__rating {
   padding: 5px;
-  background-color: #000;
+  /* background-color: #000; */
   display: inline-flex;
   align-items: center;
   margin-top: 15px;
@@ -103,4 +103,40 @@
   margin-left: 7px;
   margin-top: 3px;
   color: white;
+}
+
+/* TRAILER SOCIAL WATCHLIST */
+
+.moviedetail__text__bottom {
+  display: flex;
+  flex-direction: row;
+  background: rgb(15, 15, 15);
+  width: 35vw;
+  height: 10vh;
+  margin: 10%;
+}
+
+.movie__trailer {
+  width: 50%;
+  height: 60px;
+  /* background: rgb(94, 180, 137); */
+  margin: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie__trailer__top {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.movie__trailer__bottom {
+  text-align: center;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
 }
