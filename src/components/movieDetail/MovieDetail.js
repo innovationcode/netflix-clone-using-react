@@ -66,7 +66,30 @@ const MovieDetail = ({ movie_id }) => {
                                                       <PlayArrowRoundedIcon className="materialUI__icons" />
                                                 </span>
                                                 <span className="movie__trailer__bottom">TRAILER</span>
-                                          </div>                        
+                                          </div> 
+
+                                          <div className="movie__watchlist">
+                                                <span className="movie__watchlist__top">
+                                                      <AddIcon className="materialUI__icons" />
+                                                </span>
+                                                <span className="movie__watchlist__bottom">WATCHLIST</span>
+                                                </div>
+
+                                                <div className="movie__social__share">
+                                                <span className="movie__social__share__top">
+                                                      <ShareIcon
+                                                      className="materialUI__icons"
+                                                      style={{ fontSize: "23px" }}
+                                                      />
+                                                </span>
+                                                <span
+                                                      className="movie__social__share__bottom"
+                                                      style={{ paddingTop: "9px" }}
+                                                >
+                                                      SOCIAL
+                                                </span>
+                                          </div>
+                       
                                     </div>
                                     {/* * TRILER , Watchlist, SOCIAL SHARE ENDS* */}
                               </div>

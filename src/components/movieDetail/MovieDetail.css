@@ -116,7 +116,9 @@
   margin: 10%;
 }
 
-.movie__trailer {
+.movie__trailer,
+.movie__watchlist,
+.movie__social__share {
   width: 50%;
   height: 60px;
   /* background: rgb(94, 180, 137); */
@@ -129,12 +131,16 @@
   flex-direction: column;
 }
 
-.movie__trailer__top {
+.movie__trailer__top,
+.movie__watchlist__top,
+.movie__social__share__top {
   font-size: 25px;
   font-weight: 800;
 }
 
-.movie__trailer__bottom {
+.movie__trailer__bottom,
+.movie__watchlist__bottom,
+.movie__social__share__bottom {
   text-align: center;
   color: #fff;
   font-size: 10px;
