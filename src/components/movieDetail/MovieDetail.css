@@ -14,6 +14,7 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 6px 6px rgba(192192, 192, 0.6);
   /* width: 90%;
   width: 680px; */
   /* background: #fff;
@@ -88,6 +89,9 @@
   font-size: 18px;
 }
 
+.moviedetail__overview {
+}
+
 .movie__rating {
   padding: 5px;
   /* background-color: #000; */
@@ -111,9 +115,11 @@
   display: flex;
   flex-direction: row;
   background: rgb(15, 15, 15);
-  width: 35vw;
+  width: 18vw;
   height: 10vh;
   margin: 10%;
+  margin-left: 20%;
+  margin-top: 26%;
 }
 
 .movie__trailer,
@@ -145,4 +151,34 @@
   color: #fff;
   font-size: 10px;
   font-weight: 500;
+}
+
+.materialUI__icons {
+  font-size: 36px;
+  color: white;
+}
+
+.social__share__hover {
+  display: flex;
+  z-index: 1;
+  position: absolute;
+  margin-top: 50px;
+  visibility: hidden;
+  background-color: rgba(75, 73, 73, 0.496);
+  /* background-color: rgba(97, 94, 94, 0.295); */
+  padding: 7px 5px 2px 6px; /*top right bottom left*/
+  border-radius: 9px;
+}
+
+.movie__social__share:hover .social__share__hover {
+  visibility: visible;
+}
+
+.share-wrap-inside-div {
+  padding: 0px 10px;
+}
+
+.share-social-icons {
+  font-size: 2rem !important;
+  cursor: pointer;
 }

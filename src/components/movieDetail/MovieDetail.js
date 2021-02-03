@@ -41,7 +41,7 @@ const MovieDetail = ({ movie_id }) => {
                               <div className = "moviedetail__text__info">
                                     <h1>{movieDetails.title}</h1>
 
-                                    <p>{movieDetails.overview}</p>
+                                    <p className= "moviedetail__overview">{movieDetails.overview}</p>
 
                                     <p style ={{paddingTop:'18px', paddingBottom: '8px'}}>
                                           <span style = {{color:'gold', fontSize:'20px'}}>
@@ -73,13 +73,14 @@ const MovieDetail = ({ movie_id }) => {
                                                       <AddIcon className="materialUI__icons" />
                                                 </span>
                                                 <span className="movie__watchlist__bottom">WATCHLIST</span>
-                                                </div>
 
-                                                <div className="movie__social__share">
+                                          </div>
+
+                                          <div className="movie__social__share">
                                                 <span className="movie__social__share__top">
                                                       <ShareIcon
-                                                      className="materialUI__icons"
-                                                      style={{ fontSize: "23px" }}
+                                                            className="materialUI__icons"
+                                                            style={{ fontSize: "23px" }}
                                                       />
                                                 </span>
                                                 <span
@@ -88,6 +89,23 @@ const MovieDetail = ({ movie_id }) => {
                                                 >
                                                       SOCIAL
                                                 </span>
+
+                                                <div className="social__share__hover">
+                                                      <div className="share-wrap-inside-div">
+                                                            <FacebookIcon
+                                                                  className="share-social-icons"
+                                                                  style={{ color: "#3b5998" }}
+                                                                  // onClick={() => facebook_click(doc.url, doc.name, 400, 400)}
+                                                            />
+                                                      </div>
+                                                      <div className="share-wrap-inside-div">
+                                                            <TwitterIcon
+                                                                  className="share-social-icons"
+                                                                  style={{ color: "#1da1f2" }}
+                                                                  // onClick={() => twitter_click(doc.url, doc.name, 400, 400)}
+                                                            />
+                                                      </div>
+                                                </div>
                                           </div>
                        
                                     </div>
