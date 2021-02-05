@@ -9,8 +9,8 @@ const Login = ({ setUser }) => {
     const signIn = () => {
         auth.signInWithPopup(provider)
             .then(result => {
-                // console.log("RESULT ====>  ",result.user._lat)
-                setUser(result.user.displayName)
+                console.log("RESULT ====>  ",result.user._lat)
+                setUser(result.user)
              })
             .catch(error => alert(error.message));
    };

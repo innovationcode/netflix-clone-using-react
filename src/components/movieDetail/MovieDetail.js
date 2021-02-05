@@ -60,7 +60,8 @@ const MovieDetail = ({ movie_id }) => {
                                     </div>
 
                                     {/* * TRILER , Watchlist, SOCIAL SHARE ENDS* */}
-                                    <div className ="moviedetail__text__bottom">
+                                    <div style = {{display: 'flex', justifyContent: 'center'}}></div>
+                                    <div className ="moviedetail__text__bottom" style = {{alignItems:'flex-end'}}>
                                           <div className="movie__trailer">
                                                 <span className="movie__trailer__top">
                                                       <PlayArrowRoundedIcon className="materialUI__icons" />

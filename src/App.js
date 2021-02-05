@@ -12,7 +12,7 @@ function App() {
   const [user, setUser] = useState('');
   const [pending, setPending] = useState(true);
 
-  console.log("USER -->> ", user.displayName)
+  console.log("USER -->> ", user)
 
 
   useEffect(() => {

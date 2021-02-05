@@ -69,7 +69,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
       <div className="row__posters">
         {movies.map((movie, index) => (
           <div className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-               onClick={() => handleMovieDetails(movie)} 
+              onClick={() => handleMovieDetails(movie)} 
           >
               <img
                 key={movie.id}
@@ -97,7 +97,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
                   {/* <p style = {{color:'crimson', padding:'6px'}}>{movie.id}</p> */}
               </div>
           </div>
-        ))}
+        ))} 
       </div>
 
       {/* ************************************************************************************************************************* */}
@@ -130,7 +130,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
 
       {/* ************************************************************************************************************************* */}
 
-      { movieId && <MovieDetail movie_id ={movieId} /> }
+      { movieId ? (<MovieDetail movie_id ={movieId} />) : null }
     </div>
   );
 };
