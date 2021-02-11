@@ -37,6 +37,19 @@ const MovieDetail = ({ movie_id }) => {
             return false;
       }
 
+      const twitter_click = (url, name, width, height) => {
+            const u = url      
+            const t = name;
+            var leftPosition, topPosition;
+            leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+            //Allow for title and status bars.
+            topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+            const windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+            window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(u)+'&text='+encodeURIComponent(t),'sharer',windowFeatures);
+            return false;
+      }
+
+
 
       console.log(movieDetails, ">>>>>>>>>>>>>>>>>")
 
@@ -64,12 +77,12 @@ const MovieDetail = ({ movie_id }) => {
                                     </p>
 
                                      {/* MOVIE  RATING  */}
-                                    <div class = "movie__rating">
+                                    <div className = "movie__rating">
                                           <img src = 'https://variety.com/wp-content/uploads/2017/02/imdb1.png' 
                                                alt="imdb" 
                                                style = {{width:'50px'}}                                        
                                           ></img>
-                                          <span class ="movie__rating__span">{movieDetails.vote_average}/10 ⭐ </span>
+                                          <span className ="movie__rating__span">{movieDetails.vote_average}/10 ⭐ </span>
                                     </div>
 
                                     {/* * TRILER , Watchlist, SOCIAL SHARE ENDS* */}
@@ -115,7 +128,7 @@ const MovieDetail = ({ movie_id }) => {
                                                             <TwitterIcon
                                                                   className="share-social-icons"
                                                                   style={{ color: "#1da1f2" }}
-                                                                  // onClick={() => twitter_click(doc.url, doc.name, 400, 400)}
+                                                                  onClick={() => twitter_click(`${base_url}${movieDetails.poster_path}`, movieDetails.title, 400, 400)}
                                                             />
                                                       </div>
                                                 </div>
