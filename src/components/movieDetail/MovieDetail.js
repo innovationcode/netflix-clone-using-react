@@ -25,6 +25,19 @@ const MovieDetail = ({ movie_id }) => {
             fetchData();
       }, [movie_id]);
 
+      const facebook_click = (url, width, height) => {
+            const u = url      
+            var leftPosition, topPosition;
+            leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+            //Allow for title and status bars.
+            topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+            const windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+            window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u),'sharer',windowFeatures);
+
+            return false;
+      }
+
+
       console.log(movieDetails, ">>>>>>>>>>>>>>>>>")
 
       return (
@@ -95,7 +108,7 @@ const MovieDetail = ({ movie_id }) => {
                                                             <FacebookIcon
                                                                   className="share-social-icons"
                                                                   style={{ color: "#3b5998" }}
-                                                                  // onClick={() => facebook_click(doc.url, doc.name, 400, 400)}
+                                                                  onClick={() => facebook_click(`${base_url}${movieDetails.poster_path}`, 400, 400)}
                                                             />
                                                       </div>
                                                       <div className="share-wrap-inside-div">

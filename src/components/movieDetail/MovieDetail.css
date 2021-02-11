@@ -178,3 +178,12 @@
   font-size: 2.1rem !important;
   cursor: pointer;
 }
+
+/* Smartphones (portrait and landscape) ----------- */
+/* @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .moviedetail__inner_div {
+    display: flex;
+    flex-direction: column;
+
+  }
+} */
