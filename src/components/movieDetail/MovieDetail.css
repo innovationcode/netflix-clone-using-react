@@ -106,7 +106,7 @@
   flex-direction: row;
   background: rgb(15, 15, 15);
   width: 18vw;
-  height: 10vh;
+  height: 8.5vh;
   margin: 10%;
   margin-left: 20%;
   /* margin-top: 26%; */
@@ -160,7 +160,8 @@
   position: absolute;
   margin-top: 60px;
   visibility: hidden;
-  background-color: rgba(75, 73, 73, 0.496);
+  background: goldenrod;
+  /* background-color: rgba(75, 73, 73, 0.496); */
   /* background-color: rgba(97, 94, 94, 0.295); */
   padding: 7px 5px 2px 6px; /*top right bottom left*/
   border-radius: 9px;
@@ -180,10 +181,55 @@
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-/* @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  .moviedetail__inner_div {
-    display: flex;
-    flex-direction: column;
-
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .moviedetail__show {
+    top: 12.4%;
+    left: 12%;
   }
-} */
+
+  .moviedetail__inner_div {
+    flex-direction: column;
+    width: 74vw;
+    height: 88vh;
+  }
+  .moviedetail__image {
+    min-width: 80%;
+    height: 35%;
+  }
+
+  .moviedetail__text__info > h1 {
+    font-size: 25px;
+    padding: 10px 0px;
+  }
+  .moviedetail__text__info p {
+    padding-top: 6px;
+    font-weight: 100;
+    font-size: 15px;
+    overflow-y: scroll;
+    max-height: 16vh;
+  }
+  .movie__rating {
+    margin-top: 0px;
+  }
+  .moviedetail__text__bottom {
+    width: 56vw;
+    background: rgb(15, 15, 15);
+    height: 8.4vh;
+    margin: 5%;
+    margin-left: 6%;
+    position: fixed;
+    bottom: 6px;
+  }
+  .movie__trailer__top,
+  .movie__watchlist__top,
+  .movie__social__share__top {
+    margin: 0px;
+    padding-top: 24px;
+  }
+  .movie__trailer__bottom,
+  .movie__watchlist__bottom,
+  .movie__social__share__bottom {
+    padding-bottom: 12px;
+    font-size: 12px;
+  }
+}
