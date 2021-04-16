@@ -29,11 +29,14 @@ const Nav = ({ setUser }) => {
         src = "https://www.androidpolice.com/wp-content/uploads/2015/02/nexus2cee_Netflix_Logo_Digital-Video-e1424532515143.png"
         alt="Netflix Logo"
       />
-      <button className="nav__avatar"
-              onClick = {signOut}  
-      >
-          Sign Out
-      </button>
+      <div>
+        {/* <p style = {{color: 'white'}}>My Watchlist</p> */}
+        <button className="nav__avatar"
+                onClick = {signOut}  
+        >
+            Sign Out
+        </button>
+      </div>
     </div>
   );
 };

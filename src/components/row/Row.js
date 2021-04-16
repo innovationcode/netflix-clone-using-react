@@ -8,7 +8,7 @@ import "./Row.css";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
-const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
+const Row = ({ rowTitle, fetchUrl, isLargeRow, user }) => {
   // console.log("rowTitle, fetchUrl, isLargeRow  ---- ", rowTitle, fetchUrl, isLargeRow);
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
@@ -83,6 +83,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
 
               <div className = "row__poster__info">
                   {movie.name ? (<h3 style = {{fontFamily:"Roboto !important", paddingLeft: '12px'}}>{movie.name.substring(0,40)}</h3>) : (<h3>{movie.title.substring(0,40)}</h3>)}
+                  <p>{movie.id}</p>
                   <p style = {{fontFamily:"Roboto !important", fontSize: '13px', padding: '12px 15px 18px 12px'}}>
                      {movie.overview.substring(0,150)}...
                   </p>
@@ -91,6 +92,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
 
               <div className = "row__poster__info__row__small__poster">
                   {movie.name ? (<h3 style = {{paddingBottom: '4px', fontSize: '12px'}}> {movie.name.substring(0,40)}</h3>) : (<h3 style = {{paddingBottom: '4px', fontSize: '12px'}}>{movie.title.substring(0,40)}</h3>)}
+                  <p>{movie.id}</p>
                   <p>
                      {movie.overview.substring(0,100)}...
                   </p>
@@ -130,7 +132,7 @@ const Row = ({ rowTitle, fetchUrl, isLargeRow }) => {
 
       {/* ************************************************************************************************************************* */}
 
-      { movieId ? (<MovieDetail movie_id ={movieId} />) : null }
+      { movieId ? (<MovieDetail movie_id ={movieId} user= {user}/>) : null }
     </div>
   );
 };
