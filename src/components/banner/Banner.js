@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "./../../Data/axios.js";
 import requests from "../../Data/requests.js";
+import MyWatchList from './../myWatchList/MyWatchList.js';
 
 import "./Banner.css";
 
 const baseURL = "https://image.tmdb.org/t/p/original/";
 
-const Banner = () => {
+const Banner = ({user}) => {
   const [movie, setMovie] = useState([]);
+  const [showMyList, setShowMyList] = useState(false);
+
   
   //to show random movie poster and info in banner...
   useEffect(() => {
@@ -27,6 +30,10 @@ const Banner = () => {
   // if the decription of movie is too long to limit it to 500 characters using truncate function.
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
+
+  const showList = () => {
+    setShowMyList(true)
   }
 
   return (
@@ -54,7 +61,7 @@ const Banner = () => {
         {/* Buttons play.. */}
         <div className="banner__buttons">
           <button className="banner__button" >Play</button>
-          <button className="banner__button">My List</button>
+          <button className="banner__button" onClick = {() => showList()}>My List</button>
         </div>
         {/* description */}
         <h5 className="banner__description">
@@ -78,6 +85,7 @@ const Banner = () => {
       <div className="banner--fadeBottom" />
     </header>
     {/* <div className="banner--fadeBottom" /> */}
+    { showMyList ? (<MyWatchList user = {user} setShowMyList ={setShowMyList}/>) : null }
 
     </>
   );

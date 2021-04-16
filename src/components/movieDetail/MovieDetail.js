@@ -2,24 +2,64 @@ import React, {useState, useEffect} from 'react';
 import axios from "../../Data/axios.js";
 import ShareIcon from "@material-ui/icons/Share";
 import AddIcon from "@material-ui/icons/Add";
+import CheckIcon from '@material-ui/icons/Check';
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
+import Swal from 'sweetalert2';
+import db from "./../../firebase/firebase.js";
+
 
 import './MovieDetail.css'
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
-const MovieDetail = ({ movie_id }) => {
+const MovieDetail = ({ movie_id, user }) => {
+      // console.log("Movie ID => ", movie_id)
       const [movieDetails, setMovieDetails] = useState({});
-      const [showMovieDetails, setShowMovieDetails] = useState(false)
-
+      const [showMovieDetails, setShowMovieDetails] = useState(false);
+      const [watchlistAdded, setWatchlistAdded] = useState(false);
+      const [showNotFound, setShowNotFound] = useState(false);
+ 
       useEffect(() => {
             async function fetchData() {
               const request = await axios.get(`/movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
-              setMovieDetails(request.data);
-              setShowMovieDetails(true)
+            //   debugger
+            //   await axios.get(`/movie/${movie_id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+            //              .then(res => {
+            //                    console.log("RES => ", res)
+            //              })
+            //              .catch((error) => {
+            //                   console.error("Error : ", error);
+            //              });
+            if (request) { 
+                  setMovieDetails(request.data);
+                  setShowMovieDetails(true);
+            } else {
+                  Swal.fire("No movie details found...")
+            }
 
+            //   if(request.status === 200) {
+            //       console.log("Movie details ==> ", movieDetails)
+            //       setShowMovieDetails(true);
+            //   } else {
+            //       console.log("Movie details else ==> ", movieDetails)
+            //       setShowNotFound(true)
+            //   }
+
+              if(db.collection('users').doc(user?.uid).collection('watch_list')) {
+                  db.collection('users').doc(user?.uid).collection('watch_list').doc(`${movie_id}`).get().then((snapshot) => {
+                        if (snapshot.data()) {
+                              setWatchlistAdded(true)
+                        } else {
+                              setWatchlistAdded(false)
+                        }  
+                  })
+                  .catch((error) => {
+                        console.error("Error : ", error);
+                  });
+              }
+            
               return request;
             }
             fetchData();
@@ -49,13 +89,37 @@ const MovieDetail = ({ movie_id }) => {
             return false;
       }
 
+      const handleWatchList = async () => {
+            db
+              .collection('users')
+              .doc(user?.uid)
+              .collection('watch_list').doc(`${movie_id}`)
+              .set({
+                  movie_id : movie_id,
+                  title: movieDetails.title,
+                  image: movieDetails.poster_path || movieDetails.backdrop_path,
+                  release_date: movieDetails.release_date
+              })
+              .then(() => {
+                  setWatchlistAdded(true);
+              })
+              .catch((error) => {
+                  console.error("Error adding document: ", error);
+              });
+      }
 
+      const close = () => {
+            console.log("ShowNotFound : ", showNotFound)
+            setShowNotFound(false)
+      }
+
+      
 
       console.log(movieDetails, ">>>>>>>>>>>>>>>>>")
 
       return (
             <>
-            {showMovieDetails ? ( 
+            {showMovieDetails? ( 
             <div className="moviedetail">
                   <div className="moviedetail__show">
                         <div className = "moviedetail__inner_div">
@@ -90,14 +154,17 @@ const MovieDetail = ({ movie_id }) => {
                                     <div className ="moviedetail__text__bottom" style = {{alignItems:'flex-end'}}>
                                           <div className="movie__trailer">
                                                 <span className="movie__trailer__top">
-                                                      <PlayArrowRoundedIcon className="materialUI__icons" />
+                                                      <PlayArrowRoundedIcon className="materialUI__icons" onClick = {() => {handleTrailer(movieDetails.id)}}/>
                                                 </span>
                                                 <span className="movie__trailer__bottom">TRAILER</span>
                                           </div> 
 
                                           <div className="movie__watchlist">
                                                 <span className="movie__watchlist__top">
-                                                      <AddIcon className="materialUI__icons" />
+                                                      {watchlistAdded?  
+                                                            (<CheckIcon className="materialUI__icons"/>) :
+                                                            (<AddIcon className="materialUI__icons" onClick = {()=> handleWatchList()}/>)
+                                                      }
                                                 </span>
                                                 <span className="movie__watchlist__bottom">WATCHLIST</span>
 
@@ -141,8 +208,17 @@ const MovieDetail = ({ movie_id }) => {
                         </div>
                   </div>   
             </div> ) :
-            (
-                  null          
+            (<>
+                  {showNotFound? (
+                        <div className="moviedetail">
+                              <div className="moviedetail__show">
+                                    <div className = "moviedetail__inner_div">
+                                          <h3 className = "not_found">OOPS.. movie details not found.</h3>
+                                          <span className = "moviedetail__close" onClick = {() => {close()}}>X</span>
+                                    </div>
+                              </div>
+                        </div>) : (
+                  null)}</>
             )}
             </>
       )

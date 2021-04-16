@@ -32,18 +32,19 @@ function App() {
       {!user ? <h1 style = {{color:"cornsilk"}}><Login setUser = {setUser}/></h1> : (
         <>
         <Nav setUser = {setUser}/>
-        <Banner />
+        <Banner user= {user}/>
         <Row
           rowTitle="NETFLIX ORIGINALS"
           fetchUrl={requests.fetchNetflixOriginals}
           isLargeRow
+          user= {user}
         />
-        <Row rowTitle="Trending Now" fetchUrl={requests.fetchTrending} />
-        <Row rowTitle="Action Movies" fetchUrl={requests.fetchActionMovies} />
-        <Row rowTitle="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-        <Row rowTitle="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-        <Row rowTitle="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-        <Row rowTitle="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+        <Row rowTitle="Trending Now" fetchUrl={requests.fetchTrending} user= {user} />
+        <Row rowTitle="Action Movies" fetchUrl={requests.fetchActionMovies} user= {user} />
+        <Row rowTitle="Comedy Movies" fetchUrl={requests.fetchComedyMovies} user= {user} />
+        <Row rowTitle="Horror Movies" fetchUrl={requests.fetchHorrorMovies} user= {user} />
+        <Row rowTitle="Romance Movies" fetchUrl={requests.fetchRomanceMovies} user= {user} />
+        <Row rowTitle="Documentaries" fetchUrl={requests.fetchDocumentaries} user= {user} />
         </>
       )}
     </div>

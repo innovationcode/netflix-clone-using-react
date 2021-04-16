@@ -77,9 +77,13 @@
   font-family: "Roboto" !important;
   font-weight: 100;
   font-size: 18px;
+  
 }
 
 .moviedetail__overview {
+  max-height: 10vh;
+  min-height: 29vh;
+  overflow-y: auto;
 }
 
 .movie__rating {
@@ -178,6 +182,13 @@
 .share-social-icons {
   font-size: 2.1rem !important;
   cursor: pointer;
+}
+
+.not_found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
