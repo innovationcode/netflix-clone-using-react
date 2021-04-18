@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import db from "./../../firebase/firebase.js";
+import Swal from '@sweetalert/with-react'
 
 import './MyWatchList.css';
 
@@ -23,13 +24,16 @@ const MyWatchList  = ({ user, setShowMyList }) => {
              ))
              setShowWatchlist(true)
         } else {
-            setWatchlist([])
+            Swal(
+                <div>
+                      <h1>OOPS..</h1>
+                      <p style= {{paddingTop:'10px'}}>Your watchlist is empty</p>
+                </div>
+          )
         }
     }, [user])
     
     const removeFromWatchList = (id) => {
-        alert(id)
-        debugger
         db.collection("users")
               .doc(user?.uid)
               .collection('watch_list')
@@ -61,8 +65,14 @@ const MyWatchList  = ({ user, setShowMyList }) => {
                 </div>
             </div>
             ) :
-            (
-                null
+            (<div>
+                Swal(
+                    <div>
+                          <h1>OOPS..</h1>
+                          <p style= {{paddingTop:'10px'}}>Your watchlist is empty</p>
+                    </div>
+                )
+            </div>
             )
         }
         </>
