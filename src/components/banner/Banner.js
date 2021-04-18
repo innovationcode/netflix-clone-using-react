@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "./../../Data/axios.js";
 import requests from "../../Data/requests.js";
 import MyWatchList from './../myWatchList/MyWatchList.js';
+import YouTube from "react-youtube";
+import movieTrailer from "movie-trailer";
+import Swal from '@sweetalert/with-react';
 
 import "./Banner.css";
 
@@ -10,7 +13,7 @@ const baseURL = "https://image.tmdb.org/t/p/original/";
 const Banner = ({user}) => {
   const [movie, setMovie] = useState([]);
   const [showMyList, setShowMyList] = useState(false);
-
+  const [trailerUrl, setTrailerUrl] = useState("");
   
   //to show random movie poster and info in banner...
   useEffect(() => {
@@ -36,6 +39,35 @@ const Banner = ({user}) => {
     setShowMyList(true)
   }
 
+  const opts = {
+    height: "500",
+    width: "80%",
+    playerVars: {
+        autoplay: 1,
+    },
+};
+
+const handleTrailerdisplay = () => {
+   if (trailerUrl) {
+       setTrailerUrl("");
+    } else {
+        movieTrailer(movie?.name || "")
+          .then((url) => {
+            const urlParams = new URLSearchParams(new URL(url).search);
+            setTrailerUrl(urlParams.get("v"));
+          })
+          .catch((error) => {  
+                console.log(error)
+                Swal(
+                      <div>
+                            <h1>OOPS..</h1>
+                            <p style= {{paddingTop:'10px'}}>No movie trailer found</p>
+                      </div>
+                )
+          });
+    }
+};
+
   return (
     <>
     <header
@@ -60,7 +92,7 @@ const Banner = ({user}) => {
         </h1>
         {/* Buttons play.. */}
         <div className="banner__buttons">
-          <button className="banner__button" >Play</button>
+          <button className="banner__button" onClick= {() => {handleTrailerdisplay()}}>Play trailer</button>
           <button className="banner__button" onClick = {() => showList()}>My List</button>
         </div>
         {/* description */}
@@ -81,7 +113,15 @@ const Banner = ({user}) => {
             }}
       >
       </div> */}
+      {trailerUrl ? (
+                              <div className="movie-trailer-window">
+                                    {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
 
+                                    <button className="close__button" onClick={() => setTrailerUrl("")}>
+                                          Close
+                                    </button>
+                              </div>
+                        ) : null }
       <div className="banner--fadeBottom" />
     </header>
     {/* <div className="banner--fadeBottom" /> */}

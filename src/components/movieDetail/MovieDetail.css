@@ -82,7 +82,7 @@
 
 .moviedetail__overview {
   max-height: 10vh;
-  min-height: 29vh;
+  min-height: 25vh;
   overflow-y: auto;
 }
 

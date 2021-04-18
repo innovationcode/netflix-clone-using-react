@@ -6,8 +6,11 @@ import CheckIcon from '@material-ui/icons/Check';
 import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import db from "./../../firebase/firebase.js";
+import YouTube from "react-youtube";
+import movieTrailer from "movie-trailer";
+import Swal from '@sweetalert/with-react'
 
 
 import './MovieDetail.css'
@@ -20,6 +23,7 @@ const MovieDetail = ({ movie_id, user }) => {
       const [showMovieDetails, setShowMovieDetails] = useState(false);
       const [watchlistAdded, setWatchlistAdded] = useState(false);
       const [showNotFound, setShowNotFound] = useState(false);
+      const [trailerUrl, setTrailerUrl] = useState("");
  
       useEffect(() => {
             async function fetchData() {
@@ -32,20 +36,17 @@ const MovieDetail = ({ movie_id, user }) => {
             //              .catch((error) => {
             //                   console.error("Error : ", error);
             //              });
-            if (request) { 
+              if (request.status === 200) { 
                   setMovieDetails(request.data);
                   setShowMovieDetails(true);
-            } else {
-                  Swal.fire("No movie details found...")
-            }
-
-            //   if(request.status === 200) {
-            //       console.log("Movie details ==> ", movieDetails)
-            //       setShowMovieDetails(true);
-            //   } else {
-            //       console.log("Movie details else ==> ", movieDetails)
-            //       setShowNotFound(true)
-            //   }
+              } else {
+                  Swal(
+                        <div>
+                              <h1>OOPS..</h1>
+                              <p style= {{paddingTop:'10px'}}>No movie details found...</p>
+                        </div>
+                  )
+              }
 
               if(db.collection('users').doc(user?.uid).collection('watch_list')) {
                   db.collection('users').doc(user?.uid).collection('watch_list').doc(`${movie_id}`).get().then((snapshot) => {
@@ -60,7 +61,7 @@ const MovieDetail = ({ movie_id, user }) => {
                   });
               }
             
-              return request;
+            //   return request;
             }
             fetchData();
       }, [movie_id]);
@@ -113,7 +114,34 @@ const MovieDetail = ({ movie_id, user }) => {
             setShowNotFound(false)
       }
 
-      
+      const opts = {
+            height: "600",
+            width: "100%",
+            playerVars: {
+                autoplay: 1,
+            },
+      };
+
+      const handleTrailer = (movie) => {
+           if (trailerUrl) {
+               setTrailerUrl("");
+            } else {
+                movieTrailer(movie?.title || "")
+                  .then((url) => {
+                    const urlParams = new URLSearchParams(new URL(url).search);
+                    setTrailerUrl(urlParams.get("v"));
+                  })
+                  .catch((error) => {  
+                        console.log(error)
+                        Swal(
+                              <div>
+                                    <h1>OOPS..</h1>
+                                    <p style= {{paddingTop:'10px'}}>No movie trailer found</p>
+                              </div>
+                        )
+                  });
+            }
+      };
 
       console.log(movieDetails, ">>>>>>>>>>>>>>>>>")
 
@@ -154,7 +182,7 @@ const MovieDetail = ({ movie_id, user }) => {
                                     <div className ="moviedetail__text__bottom" style = {{alignItems:'flex-end'}}>
                                           <div className="movie__trailer">
                                                 <span className="movie__trailer__top">
-                                                      <PlayArrowRoundedIcon className="materialUI__icons" onClick = {() => {handleTrailer(movieDetails.id)}}/>
+                                                      <PlayArrowRoundedIcon className="materialUI__icons" onClick = {() => {handleTrailer(movieDetails)}}/>
                                                 </span>
                                                 <span className="movie__trailer__bottom">TRAILER</span>
                                           </div> 
@@ -206,6 +234,15 @@ const MovieDetail = ({ movie_id, user }) => {
                               </div>
                               <span className = "moviedetail__close" onClick = {() => {setShowMovieDetails(false)}}>X</span>
                         </div>
+                        {trailerUrl ? (
+                              <div className="movie-trailer-window">
+                                    {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+
+                                    <button className="close__button" onClick={() => setTrailerUrl("")}>
+                                          Close
+                                    </button>
+                              </div>
+                        ) : null }
                   </div>   
             </div> ) :
             (<>
